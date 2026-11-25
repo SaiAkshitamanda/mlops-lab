@@ -8,22 +8,22 @@ jobs:
     run-on: ubuntu-latest
     steps:
       -name: Get the code
-      uses:actions/checkout@v4
-      -name:Install python
-      uses:actions/setup-python@v5
+       uses: actions/checkout@v4
+      -name: Install python
+       uses: actions/setup-python@v5
        with:
         python-verdion:"3.13"
         cache:pip
-      -name:Install dependencies
-      run: pip install -r requirements.txt
-      -name:Create dataset
-      run: python src/make_dataset.py
+      -name: Install dependencies
+       run: pip install -r requirements.txt
+      -name: Create dataset
+       run: python src/make_dataset.py
       -name: preprocess data
-      run: python src/preprocess.py
-      -name:train model
-      run: python src/train.py
-      -name:save model as a downloadable artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name:trained-model
-        path:models/
+       run: python src/preprocess.py
+      -name: train model
+       run: python src/train.py
+      -name: save model as a downloadable artifact
+       uses: actions/upload-artifact@v4
+       with:
+        name: trained-model
+        path: models/
